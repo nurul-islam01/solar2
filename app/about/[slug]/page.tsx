@@ -209,13 +209,13 @@ export default async function AboutDetailPage({ params }: { params: Promise<{ sl
       </section>
 
       {/* Content based on page type */}
-      {slug === 'story' && (
+      {slug === 'story' && 'intro' in page.content && (
         <section className="section bg-white">
           <div className="container max-w-4xl">
             <p className="text-body-lg text-text-secondary mb-12">
               {page.content.intro}
             </p>
-            {page.content.sections.map((section, index) => (
+            {'sections' in page.content && page.content.sections.map((section, index) => (
               <div key={index} className="mb-12 last:mb-0">
                 <h2 className="text-heading-3 font-heading font-bold text-text-primary mb-4">
                   {section.title}
@@ -229,7 +229,7 @@ export default async function AboutDetailPage({ params }: { params: Promise<{ sl
         </section>
       )}
 
-      {slug === 'history' && (
+      {slug === 'history' && 'timeline' in page.content && (
         <section className="section bg-white">
           <div className="container max-w-4xl">
             <div className="relative">
@@ -260,7 +260,7 @@ export default async function AboutDetailPage({ params }: { params: Promise<{ sl
         </section>
       )}
 
-      {isBlogOrNews && (
+      {isBlogOrNews && 'posts' in page.content && (
         <section className="section bg-white">
           <div className="container">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

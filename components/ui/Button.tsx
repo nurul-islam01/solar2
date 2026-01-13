@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react'
 import { clsx } from 'clsx'
 import Link from 'next/link'
 
-type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'eco'
+type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'eco' | 'white'
 type ButtonSize = 'sm' | 'md' | 'lg'
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -21,6 +21,7 @@ const variantClasses: Record<ButtonVariant, string> = {
   outline: 'bg-transparent text-primary border-2 border-primary hover:bg-primary hover:text-white',
   ghost: 'bg-transparent text-text-primary hover:text-primary hover:bg-primary-light/50',
   eco: 'bg-gradient-to-r from-primary to-earth-olive text-white hover:shadow-glow',
+  white: 'bg-white text-[#1A2E1C] hover:bg-primary-light shadow-soft',
 }
 
 const sizeClasses: Record<ButtonSize, string> = {

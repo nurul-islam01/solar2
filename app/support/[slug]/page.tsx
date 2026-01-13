@@ -187,7 +187,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
       </section>
 
       {/* Content based on page type */}
-      {slug === 'product-test' && (
+      {slug === 'product-test' && 'tests' in page.content && (
         <section className="section bg-background-secondary">
           <div className="container">
             <SectionHeading
@@ -210,7 +210,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
         </section>
       )}
 
-      {slug === 'warranty' && (
+      {slug === 'warranty' && 'warranties' in page.content && (
         <>
           <section className="section bg-white">
             <div className="container">
@@ -238,7 +238,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
                     <Check className="w-5 h-5 text-primary" /> What&apos;s Covered
                   </h3>
                   <ul className="space-y-3">
-                    {page.content.coverage.map((item, index) => (
+                    {'coverage' in page.content && page.content.coverage.map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <Check className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                         <span className="text-text-secondary">{item}</span>
@@ -251,7 +251,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
                     <Shield className="w-5 h-5 text-red-500" /> Exclusions
                   </h3>
                   <ul className="space-y-3">
-                    {page.content.exclusions.map((item, index) => (
+                    {'exclusions' in page.content && page.content.exclusions.map((item, index) => (
                       <li key={index} className="flex items-start gap-3 text-text-secondary">
                         <span className="text-red-500">•</span>
                         {item}
@@ -265,7 +265,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
         </>
       )}
 
-      {slug === 'certifications' && (
+      {slug === 'certifications' && 'certifications' in page.content && (
         <section className="section bg-white">
           <div className="container">
             <SectionHeading
@@ -291,7 +291,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
         </section>
       )}
 
-      {slug === 'custom-panel' && (
+      {slug === 'custom-panel' && 'customOptions' in page.content && (
         <>
           <section className="section bg-white">
             <div className="container">
@@ -315,7 +315,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
               <div className="relative">
                 <div className="absolute top-8 left-8 right-8 h-0.5 bg-primary-light hidden md:block" />
                 <div className="grid md:grid-cols-5 gap-6">
-                  {page.content.process.map((step) => (
+                  {'process' in page.content && page.content.process.map((step) => (
                     <div key={step.step} className="relative text-center">
                       <div className="w-16 h-16 bg-primary text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 relative z-10">
                         {step.step}
@@ -345,7 +345,7 @@ export default async function SupportDetailPage({ params }: { params: Promise<{ 
         </>
       )}
 
-      {slug === 'faq' && (
+      {slug === 'faq' && 'categories' in page.content && (
         <section className="section bg-white">
           <div className="container max-w-4xl">
             {page.content.categories.map((category, catIndex) => (
